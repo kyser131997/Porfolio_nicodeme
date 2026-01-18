@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Nicodème Moulonga - Data Analyst & AI / Data Engineer">
+    <title>Nicodème Moulonga | Data Analyst & IA</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body data-theme="dark">
+    <!-- Loader -->
+    <div id="loader" class="loader-mask">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#home" class="logo">NM<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home" data-nav="home">Accueil</a></li>
+                <li><a href="#about" data-nav="about">À propos</a></li>
+                <li><a href="#projects" data-nav="projects">Projets</a></li>
+                <li><a href="#experience" data-nav="experience">Expériences</a></li>
+                <li><a href="#skills" data-nav="skills">Compétences</a></li>
+                <li><a href="#contact" data-nav="contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="lang-toggle" class="btn-icon" title="Switch Language">FR</button>
+                <button id="theme-toggle" class="btn-icon" title="Toggle Theme">
+                    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="mobile-menu-toggle">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section">
+            <div class="container hero-grid">
+                <div class="hero-content reveal">
+                    <span class="badge" id="hero-badge">Disponible immédiatement</span>
+                    <h1 id="hero-name">Nicodème Moulonga</h1>
+                    <h2 id="hero-title">Data Analyst</h2>
+                    <p id="hero-subtitle">Data Analyst & Engineer orienté décision et performance.</p>
+                    <div class="hero-ctas">
+                        <a href="#projects" class="btn btn-primary" id="cta-projects">Voir mes projets</a>
+                        <a href="assets/cv/CV_DATA_analyst_data_Engineer.pdf" class="btn btn-secondary" id="cta-cv"
+                            download>Télécharger CV</a>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="visual-blob"></div>
+                    <div class="visual-card">
+                        <code>
+                            <span>def</span> <span class="func">analyze_data</span>(performance):<br>
+                            &nbsp;&nbsp;<span>return</span> performance.maximize()
+                        </code>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+            </div>
+        </section>
+
+
+
+        <!-- About Section -->
+        <section id="about" class="about section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="about-heading">À propos</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="about-image-container reveal">
+                    <div class="about-image">
+                        <img src="assets/img/nic.jpg" alt="Nicodème Boulonga">
+                    </div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <p id="about-desc"></p>
+                    </div>
+                    <div class="about-info reveal">
+                        <ul class="info-list">
+                            <li><strong>Location:</strong> <span id="info-location"></span></li>
+                            <li><strong>Email:</strong> <span id="info-email"></span></li>
+                            <li><strong>Phone:</strong> <span id="info-phone"></span></li>
+                            <li><strong>Languages:</strong> <span id="info-langs"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="projects-heading">Mes Projets</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <!-- Filters & Search -->
+                <div class="projects-controls reveal">
+                    <div class="search-box">
+                        <input type="text" id="project-search" placeholder="Rechercher un projet...">
+                    </div>
+                    <div class="filter-tags" id="filter-container">
+                        <button class="tag active" data-filter="all">Tous</button>
+                    </div>
+                    <div class="sort-box">
+                        <select id="project-sort">
+                            <option value="recent">Plus récents</option>
+                            <option value="old">Plus anciens</option>
+                        </select>
+                    </div>
+                    <div class="results-count" id="results-count"></div>
+                </div>
+
+                <div class="projects-grid" id="projects-container">
+                    <!-- Dynamic Project Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="exp-heading">Expériences Professionnelles</h2>
+                    <div class="header-line"></div>
+                </div>
+                <div class="timeline" id="timeline-container">
+                    <!-- Dynamic Timeline Items -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="skills-heading">Compétences</h2>
+                    <div class="header-line"></div>
+                </div>
+                <div class="skills-grid" id="skills-container">
+                    <!-- Dynamic Skills Categories -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Formation & Certifications Section -->
+        <section id="education" class="education section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="edu-cert-main-heading">Formation & Certifications</h2>
+                    <div class="header-line"></div>
+                </div>
+                <div class="edu-cert-grid">
+                    <div class="edu-column">
+                        <h3 id="edu-heading">Formation</h3>
+                        <div id="education-container"></div>
+                    </div>
+                    <div class="cert-column">
+                        <h3 id="cert-heading">Certifications</h3>
+                        <div id="certifications-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="contact-heading">Me Contacter</h2>
+                    <div class="header-line"></div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <p id="contact-text">N'hésitez pas à me contacter pour une opportunité ou simplement pour
+                            échanger !</p>
+                        <div class="contact-methods">
+                            <div class="method">
+                                <span class="icon">✉️</span>
+                                <span id="contact-email"></span>
+                                <button class="copy-btn" data-copy="nicodememoulonga@gmail.com"
+                                    title="Copier email">📋</button>
+                            </div>
+                            <div class="method">
+                                <span class="icon">📞</span>
+                                <span id="contact-phone"></span>
+                                <button class="copy-btn" data-copy="0753245186" title="Copier téléphone">📋</button>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/nicodeme-434912175/" class="social-icon">LinkedIn</a>
+                            <a href="https://github.com/kyser131997" class="social-icon">GitHub</a>
+                        </div>
+                    </div>
+                    <form class="contact-form reveal" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="contact-name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact-email-input" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact-message" placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-send">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Nicodème Moulonga. All rights reserved.</p>
+            <a href="#home" class="back-to-top" id="back-to-top">↑</a>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Populated via JS -->
+            </div>
+            <div class="modal-nav">
+                <button id="modal-prev" class="btn-nav">← Précédent</button>
+                <button id="modal-next" class="btn-nav">Suivant →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button id="lightbox-prev" class="lightbox-nav lightbox-prev">‹</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div id="lightbox-video-container"></div>
+        </div>
+        <button id="lightbox-next" class="lightbox-nav lightbox-next">›</button>
+    </div>
+
+    <!-- Script -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/contact.js"></script>
+</body>
+
+</html>
