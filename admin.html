@@ -1,108 +1,153 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    /* SUPABASE CONFIG */
-    const SUPABASE_URL = 'https://ovocrcrkrnggevzzgqgq.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_PPQyKeDyTRg77nOzg2WXGA_rsCDcD6V';
-    const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+<!DOCTYPE html>
+<html lang="fr">
 
-    const messagesContainer = document.getElementById('messages-container');
-    const clearBtn = document.getElementById('clear-all');
-
-    if (!supabase) {
-        console.error("Supabase client not found");
-        return;
-    }
-
-    async function loadDashboard() {
-        /* 1. ANALYTICS (DEPUIS LE CLOUD) */
-        try {
-            // Récupération de toutes les visites pour calculer les uniques et le total
-            const { data: visitsData, error: vsError } = await supabase
-                .from('visits')
-                .select('visitor_id');
-
-            if (vsError) throw vsError;
-
-            const totalSessions = visitsData ? visitsData.length : 0;
-            const uniqueVisitors = new Set(visitsData?.map(v => v.visitor_id)).size;
-
-            document.getElementById('stat-visitors').textContent = uniqueVisitors;
-            document.getElementById('stat-views').textContent = totalSessions;
-
-            /* Nombre de projets (local) */
-            const projectCount = window.portfolioData ? window.portfolioData.projects.length : 0;
-            document.getElementById('stat-projects').textContent = projectCount;
-
-        } catch (err) {
-            console.error("Error loading analytics", err);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Messages | Nicodème Moulonga</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .admin-page {
+            padding: 100px 0;
+            min-height: 100vh;
         }
 
-        /* 2. MESSAGES (DEPUIS LE CLOUD) */
-        try {
-            const { data: messages, error: mError } = await supabase
-                .from('messages')
-                .select('*')
-                .order('created_at', { ascending: false });
-
-            if (mError) throw mError;
-
-            if (!messages || messages.length === 0) {
-                messagesContainer.innerHTML = '<div class="empty-state"><h3>Aucun message pour le moment.</h3></div>';
-            } else {
-                messagesContainer.innerHTML = messages.map(msg => `
-                    <div class="message-card" data-id="${msg.id}">
-                        <div class="message-meta">
-                            <span><strong>${msg.name}</strong> (${msg.email})</span>
-                            <span>${new Date(msg.created_at).toLocaleString('fr-FR')}</span>
-                        </div>
-                        <div class="message-body">${msg.message}</div>
-                        <div style="margin-top: 1rem; text-align: right;">
-                            <button class="btn-delete" onclick="deleteMessage(${msg.id})">Supprimer</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        } catch (err) {
-            console.error("Error loading messages", err);
-            const errorMsg = err.message || "Erreur inconnue";
-            const errorCode = err.code || "";
-            messagesContainer.innerHTML = `
-                <div class="empty-state" style="color: #ef4444;">
-                    <h3>Erreur de chargement</h3>
-                    <p>${errorMsg} ${errorCode ? `(Code: ${errorCode})` : ''}</p>
-                    <p style="font-size: 0.8rem; margin-top: 1rem;">Vérifiez que la table 'messages' existe et que l'accès public (RLS) est activé.</p>
-                </div>`;
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-    }
 
-    /* Fonction globale pour supprimer un message */
-    window.deleteMessage = async (id) => {
-        if (confirm('Supprimer ce message définitivement du Cloud ?')) {
-            const { error } = await supabase
-                .from('messages')
-                .delete()
-                .eq('id', id);
-
-            if (error) {
-                alert("Erreur lors de la suppression");
-            } else {
-                loadDashboard();
-            }
+        .messages-list {
+            display: grid;
+            gap: 1.5rem;
         }
-    };
 
-    if (clearBtn) {
-        clearBtn.addEventListener('click', async () => {
-            if (confirm('Voulez-vous vraiment effacer TOUS les messages du Cloud ?')) {
-                const { error } = await supabase
-                    .from('messages')
-                    .delete()
-                    .neq('id', 0); /* Supprime tout */
+        .message-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            transition: var(--transition);
+        }
 
-                if (error) alert("Erreur");
-                else loadDashboard();
-            }
-        });
-    }
+        .message-card:hover {
+            border-color: var(--primary);
+        }
 
-    loadDashboard();
-});
+        .message-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .message-body {
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem;
+            opacity: 0.5;
+        }
+
+        .nav-back {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <div class="container admin-page">
+        <a href="index.html" class="nav-back">← Retour au portfolio</a>
+
+        <div class="admin-header">
+            <h1>📊 Tableau de bord</h1>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span id="stat-visitors" class="stat-value">0</span>
+                <span class="stat-label">Visiteurs uniques</span>
+            </div>
+            <div class="stat-card">
+                <span id="stat-views" class="stat-value">0</span>
+                <span class="stat-label">Sessions Cloud</span>
+            </div>
+            <div class="stat-card">
+                <span id="stat-projects" class="stat-value">0</span>
+                <span class="stat-label">Projets réalisés</span>
+            </div>
+        </div>
+
+        <div class="admin-header">
+            <h1>📥 Messages reçus</h1>
+            <button id="clear-all" class="btn btn-secondary">Tout effacer</button>
+        </div>
+
+        <div id="messages-container" class="messages-list">
+            <!-- Messages injectés ici -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+
+</html>
