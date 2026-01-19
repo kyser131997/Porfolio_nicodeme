@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // SUPABASE CONFIG
+    /* SUPABASE CONFIG */
     const SUPABASE_URL = 'https://ovocrcrkrnggevzzgqgq.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_PPQyKeDyTRg77nOzg2WXGA_rsCDcD6V';
     const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function loadDashboard() {
-        // 1. ANALYTICS (DEPUIS LE CLOUD)
+        /* 1. ANALYTICS (DEPUIS LE CLOUD) */
         try {
             // Récupération de toutes les visites pour calculer les uniques et le total
             const { data: visitsData, error: vsError } = await supabase
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('stat-visitors').textContent = uniqueVisitors;
             document.getElementById('stat-views').textContent = totalSessions;
 
-            // Nombre de projets (local)
+            /* Nombre de projets (local) */
             const projectCount = window.portfolioData ? window.portfolioData.projects.length : 0;
             document.getElementById('stat-projects').textContent = projectCount;
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error("Error loading analytics", err);
         }
 
-        // 2. MESSAGES (DEPUIS LE CLOUD)
+        /* 2. MESSAGES (DEPUIS LE CLOUD) */
         try {
             const { data: messages, error: mError } = await supabase
                 .from('messages')
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Fonction globale pour supprimer un message
+    /* Fonction globale pour supprimer un message */
     window.deleteMessage = async (id) => {
         if (confirm('Supprimer ce message définitivement du Cloud ?')) {
             const { error } = await supabase
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const { error } = await supabase
                     .from('messages')
                     .delete()
-                    .neq('id', 0); // Supprime tout
+                    .neq('id', 0); /* Supprime tout */
 
                 if (error) alert("Erreur");
                 else loadDashboard();
