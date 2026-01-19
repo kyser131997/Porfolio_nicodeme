@@ -39,7 +39,7 @@ window.portfolioData = {
 
     projects: [
         {
-            id: 1,
+            id: 4,
             title: "Ingénierie de Pipeline Big Data – NYC Taxi Analytics",
             shortDescription: {
                 fr: "Pipeline ELT automatisé sur GCP pour l'analyse massive de flux de transport.",
@@ -90,7 +90,7 @@ window.portfolioData = {
             date: "2026"
         },
         {
-            id: 2,
+            id: 3,
             title: "Prédiction du non-renouvellement de contrats de Location Longue Durée (LLD)",
             shortDescription: {
                 fr: "prédiction du non-renouvellement de contrats de Location Longue Durée (LLD)",
@@ -137,7 +137,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
             date: "2026"
         },
         {
-            id: 3,
+            id: 2,
             title: "Analyse et pilotage financier sur Power BI",
             shortDescription: {
                 fr: "Analyse et pilotage financier sur Power BI",
@@ -194,7 +194,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
             date: "2026"
         },
         {
-            id: 4,
+            id: 1,
             title: "Dashboard de gestion de tâches",
             shortDescription: {
                 fr: "Dashboard de gestion de tâches.",
