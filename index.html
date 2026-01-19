@@ -108,23 +108,25 @@
                     <div class="header-line"></div>
                 </div>
 
-                <div class="about-image-container reveal">
-                    <div class="about-image">
-                        <img src="assets/img/nic.jpg" alt="Nicodème Boulonga">
-                    </div>
-                </div>
-
                 <div class="about-grid">
-                    <div class="about-text reveal">
-                        <p id="about-desc"></p>
+                    <div class="about-image-column reveal">
+                        <div class="about-image">
+                            <img src="assets/img/nic.jpg" alt="Nicodème Moulonga">
+                        </div>
                     </div>
-                    <div class="about-info reveal">
-                        <ul class="info-list">
-                            <li><strong>Location:</strong> <span id="info-location"></span></li>
-                            <li><strong>Email:</strong> <span id="info-email"></span></li>
-                            <li><strong>Phone:</strong> <span id="info-phone"></span></li>
-                            <li><strong>Languages:</strong> <span id="info-langs"></span></li>
-                        </ul>
+
+                    <div class="about-content-column">
+                        <div class="about-text reveal">
+                            <p id="about-desc"></p>
+                        </div>
+                        <div class="about-info reveal">
+                            <ul class="info-list">
+                                <li><strong>Localisation:</strong> <span id="info-location"></span></li>
+                                <li><strong>Email:</strong> <span id="info-email"></span></li>
+                                <li><strong>Téléphone:</strong> <span id="info-phone"></span></li>
+                                <li><strong>Langues:</strong> <span id="info-langs"></span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -289,6 +291,8 @@
     </div>
 
     <!-- Script -->
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/contact.js"></script>
