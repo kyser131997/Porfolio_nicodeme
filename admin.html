@@ -136,6 +136,27 @@
         </div>
 
         <div class="admin-header">
+            <h1>📱 Appareils détectés</h1>
+        </div>
+        <div class="stat-card" style="margin-bottom: 3rem; text-align: left; padding: 2rem;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
+                        <th style="padding: 1rem 0; text-align: left;">Type d'appareil / Navigateur</th>
+                        <th style="padding: 1rem 0; text-align: right;">Visiteurs uniques</th>
+                    </tr>
+                </thead>
+                <tbody id="devices-container">
+                    <!-- Appareils injectés ici -->
+                    <tr>
+                        <td colspan="2" style="padding: 2rem; text-align: center; opacity: 0.5;">Chargement des
+                            données...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-header">
             <h1>📥 Messages reçus</h1>
             <button id="clear-all" class="btn btn-secondary">Tout effacer</button>
         </div>
