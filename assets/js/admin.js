@@ -22,11 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (vsError) throw vsError;
 
-            const totalSessions = visitsData ? visitsData.length : 0;
             const uniqueVisitors = new Set(visitsData?.map(v => v.visitor_id)).size;
 
             document.getElementById('stat-visitors').textContent = uniqueVisitors;
-            document.getElementById('stat-views').textContent = totalSessions;
+            document.getElementById('stat-views').textContent = uniqueVisitors;
 
             /* Nombre de projets (local) */
             const projectCount = window.portfolioData ? window.portfolioData.projects.length : 0;
