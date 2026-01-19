@@ -119,7 +119,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
                 "assets/img/LLD/client_risque.PNG",
                 "assets/img/LLD/analyst_exploratoire.png",
                 "assets/img/LLD/comparatif_model.png",
-                "assets/img/LLD/courbe_ROC.png"
+                "assets/img/LLD/courbe_ROC.png",
             ],
             // video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
             links: {
