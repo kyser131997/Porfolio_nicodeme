@@ -244,9 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('supabase_visitor_id', visitorId);
         }
 
-        // Versioning pour forcer la capture de l'UA pour tout le monde (v3_force)
-        const logVersion = 'v3_force';
-        if (!sessionStorage.getItem('supabase_logged_' + logVersion)) {
+        // Utilisation du LocalStorage pour ne logger l'utilisateur qu'une seule fois à vie (ou jusqu'au nettoyage du cache)
+        const logFlag = 'supabase_visitor_logged';
+        if (!localStorage.getItem(logFlag)) {
             try {
                 const { error } = await supabase.from('visits').insert([{
                     visitor_id: visitorId,
@@ -254,10 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }]);
 
                 if (!error) {
-                    sessionStorage.setItem('supabase_logged_' + logVersion, 'true');
-                    console.log("Analytics: Visite enregistrée avec succès");
-                } else {
-                    console.error("Analytics Error:", error.message);
+                    localStorage.setItem(logFlag, 'true');
+                    console.log("Analytics: Premier passage enregistré !");
                 }
             } catch (err) {
                 console.error("Analytics Exception:", err);
@@ -358,6 +356,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderModalContent(project, container) {
         container.innerHTML = `
+            ${project.video ? `
+                <div class="modal-video-section">
+                    <div class="video-container" id="modal-video-wrapper">
+                        <video class="main-video" autoplay muted loop playsinline controls>
+                            <source src="${project.video}" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                        <div class="media-expand-btn video-expand">🔍</div>
+                    </div>
+                </div>
+            ` : ''}
             <div class="modal-grid">
                 <div class="modal-gallery">
                     <div class="main-img-container">
@@ -387,8 +396,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="modal-actions">
-                        ${project.links.github !== '#' ? `<a href="${project.links.github}" target="_blank" class="btn btn-secondary">Code GitHub</a>` : ''}
-                        ${project.links.demo && project.links.demo !== '#' ? `<a href="${project.links.demo}" target="_blank" class="btn btn-primary">Démo Live</a>` : ''}
+                        ${project.links.github !== '#' ? `<a href="${project.links.github}" target="_blank" class="btn btn-primary">Code GitHub</a>` : ''}
+                        ${project.links.demo && project.links.demo !== '#' ? `<a href="${project.links.demo}" target="_blank" class="btn btn-secondary">Démo Live</a>` : ''}
                     </div>
                 </div>
             </div>
@@ -398,13 +407,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function initLightbox() {
         const lb = document.getElementById('lightbox');
         const lbImg = document.getElementById('lightbox-img');
+        const lbVideoContainer = document.getElementById('lightbox-video-container');
         if (!lb || !lbImg) return;
 
         document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('main-modal-img') || e.target.classList.contains('media-expand-btn')) {
+            // Check for image expand or main image click
+            if (e.target.classList.contains('main-modal-img') || (e.target.classList.contains('media-expand-btn') && !e.target.classList.contains('video-expand'))) {
+                lbImg.style.display = 'block';
+                lbVideoContainer.style.display = 'none';
                 lbImg.src = currentProject.images[currentImgIndex];
                 lb.classList.add('active');
-                lbImg.classList.remove('zoomed'); // Reset zoom
+                lbImg.classList.remove('zoomed');
+            }
+
+            // Check for video expand
+            if (e.target.closest('.video-expand') || e.target.classList.contains('main-video')) {
+                lbImg.style.display = 'none';
+                lbVideoContainer.style.display = 'block';
+                lbVideoContainer.innerHTML = `
+                    <video controls autoplay class="lightbox-video">
+                        <source src="${currentProject.video}" type="video/mp4">
+                    </video>
+                `;
+                lb.classList.add('active');
             }
 
             if (e.target.id === 'lightbox-next' || e.target.closest('#lightbox-next')) {
@@ -414,19 +439,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 navigateLightbox(-1);
             }
 
-            // Zoom toggle
+            // Zoom toggle for image only
             if (e.target === lbImg) {
                 lbImg.classList.toggle('zoomed');
             }
 
-            if (e.target.classList.contains('lightbox-close') || (e.target === lb && e.target !== lbImg)) {
+            if (e.target.classList.contains('lightbox-close') || (e.target === lb && !e.target.closest('.lightbox-content'))) {
                 lb.classList.remove('active');
                 lbImg.classList.remove('zoomed');
+                lbVideoContainer.innerHTML = ''; // Stop video
             }
         });
 
         function navigateLightbox(step) {
             navigateImages(step);
+            lbImg.style.display = 'block';
+            lbVideoContainer.style.display = 'none';
+            lbVideoContainer.innerHTML = '';
             lbImg.src = currentProject.images[currentImgIndex];
             lbImg.classList.remove('zoomed');
         }
