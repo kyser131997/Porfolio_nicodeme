@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             const uniqueVisitors = new Set(visitsData?.map(v => v.visitor_id)).size;
+            const totalSessions = visitsData?.length || 0;
 
             // Appareils
             const deviceMap = {};
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             document.getElementById('stat-visitors').textContent = uniqueVisitors;
-            document.getElementById('stat-views').textContent = uniqueVisitors;
+            document.getElementById('stat-views').textContent = totalSessions;
             document.getElementById('stat-projects').textContent = window.portfolioData ? window.portfolioData.projects.length : 0;
 
         } catch (err) { console.error("Stats error", err); }
