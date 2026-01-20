@@ -39,7 +39,64 @@ window.portfolioData = {
 
     projects: [
         {
-            id: 4,
+            id: 2,
+            title: "Automatisation & Pilotage Budgétaire avec Alteryx",
+            shortDescription: {
+                fr: "Automatisation du suivi budgétaire mensuel et génération d'alertes financières.",
+                en: "Monthly budget tracking automation and financial alerts generation."
+            },
+            fullDescription: {
+                fr: `🎯 **Contexte** : Ce projet vise à automatiser le suivi budgétaire mensuel en centralisant les données financières (budgets, dépenses réelles) et en produisant des indicateurs clés (KPIs) ainsi que des alertes budgétaires. L’objectif est de faciliter le pilotage financier et de fiabiliser les reportings sans intervention manuelle.
+
+🌟 **Expertise** : Maîtrise avancée d'Alteryx Designer pour le Data Blending et l'automatisation de workflows complexes complexes.
+
+🏗️ **Points clés** :
+- **Data Preparation** : Import et normalisation des flux budgets et dépenses réelles.
+- **Calculs KPIs** : Calcul automatique des variances, taux de consommation et indicateurs de performance.
+- **Alerting Intelligent** : Filtrage automatique des dépassements et génération d'un dataset d'alertes dédié.
+- **Reporting BI Ready** : Sorties structurées pour intégration immédiate dans des outils de visualisation.
+
+📈 **Valeur Ajoutée** :
+- Gain de temps massif sur le traitement mensuel.
+- Fiabilité totale des données via la suppression des erreurs manuelles.
+- Visibilité proactive sur les dérives budgétaires.`,
+                en: `🎯 **Context**: This project aims to automate monthly budget tracking by centralizing financial data (budgets, actual spending) and producing key performance indicators (KPIs) as well as budget alerts. The goal is to facilitate financial management and reliable reporting without manual intervention.
+
+🌟 **Expertise**: Advanced mastery of Alteryx Designer for Data Blending and complex workflow automation.
+
+🏗️ **Key Points**:
+- **Data Preparation**: Import and normalization of budget and actual expenditure flows.
+- **KPI Calculations**: Automatic calculation of variances, consumption rates, and performance indicators.
+- **Intelligent Alerting**: Automatic filtering of overruns and generation of a dedicated alert dataset.
+- **BI Ready Reporting**: Structured outputs for immediate integration into visualization tools.
+
+📈 **Added Value**:
+- Massive time savings on monthly processing.
+- Total data reliability through the elimination of manual errors.
+- Proactive visibility on budgetary drifts.`,
+            },
+            stack: ["Alteryx", "ETL", "Finance", "Data Blending", "Reporting", "Automation"],
+            tags: ["Alteryx", "ETL", "Finance", "Automation"],
+            images: [
+                "assets/img/Alteryx/Budget.png",
+            ],
+            //video: "assets/img/Etl_taxis.mp4", // Placeholder video
+            links: {
+                github: "#",
+                demo: "#"
+            },
+            role: {
+                fr: "Data Architect",
+                en: "Data Architect"
+            },
+            impact: {
+                fr: "Automatisation complète du reporting financier et détection proactive des anomalies.",
+                en: "Full automation of financial reporting and proactive anomaly detection."
+            },
+            date: "2026"
+        },
+        {
+            id: 5,
             title: "Ingénierie de Pipeline Big Data – NYC Taxi Analytics",
             shortDescription: {
                 fr: "Pipeline ELT automatisé sur GCP pour l'analyse massive de flux de transport.",
@@ -74,7 +131,7 @@ window.portfolioData = {
 
 
             ],
-            //video: "assets/img/video/English.mp4",
+            video: "assets/img/Etl_taxis.mp4",
             links: {
                 github: "https://github.com/kyser131997/data-pipeline-etl",
                 //demo: "https://github.com/kyser131997/data-pipeline-etl"
@@ -90,7 +147,7 @@ window.portfolioData = {
             date: "2026"
         },
         {
-            id: 3,
+            id: 4,
             title: "Prédiction du non-renouvellement de contrats de Location Longue Durée (LLD)",
             shortDescription: {
                 fr: "prédiction du non-renouvellement de contrats de Location Longue Durée (LLD)",
@@ -121,6 +178,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
                 "assets/img/LLD/comparatif_model.png",
                 "assets/img/LLD/courbe_roc.png",
             ],
+            video: "assets/img/LLD/prediction_voiture.mp4",
             // video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
             links: {
                 github: "https://github.com/kyser131997/LLD-Churn-Prediction-Machine-Learning/tree/main",
@@ -137,7 +195,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
             date: "2026"
         },
         {
-            id: 2,
+            id: 1,
             title: "Analyse et pilotage financier sur Power BI",
             shortDescription: {
                 fr: "Analyse et pilotage financier sur Power BI",
@@ -178,6 +236,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
                 //"https://picsum.photos/seed/p3-2/800/600",
                 //"https://picsum.photos/seed/p3-3/800/600"
             ],
+            //video: "assets/img/Etl_taxis.mp4",
             // video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
             links: {
                 github: "https://github.com/kyser131997/Dashboard-Finances-Power-BI-/tree/main",
@@ -194,28 +253,41 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
             date: "2026"
         },
         {
-            id: 1,
-            title: "Dashboard de gestion de tâches",
+            id: 3,
+            title: "Smart Productivity Cockpit : Analyseur de Performance & Pilotage de Tâches",
             shortDescription: {
-                fr: "Dashboard de gestion de tâches.",
-                en: "Task management dashboard."
+                fr: "Application intelligente de monitoring de la productivité et gestion de flux de travail.",
+                en: "Intelligent productivity monitoring application and workflow management."
             },
             fullDescription: {
-                fr: `🎯 **Objectif** : To-Do App Pro est une Dashboard développée en Python avec Streamlit, destinée à faciliter l’organisation des tâches quotidiennes et des listes de courses. L’objectif est de proposer une solution simple, fluide et persistante, sans dépendre d’une base de données SQL.
+                fr: `🎯 **Objectif** : Transformer la gestion des tâches quotidiennes en un véritable centre de pilotage analytique. Cette application, développée sous Streamlit, dépasse la simple liste pour offrir un suivi précis de la performance individuelle.
 
-🌟 **Expertise** : Mise en place d'une Dashboard Python avec Streamlit.
+🌟 **Expertise** : Maîtrise de l’interactivité en Python et de la structure de données persistante (JSON) pour une autonomie totale sans dépendance SQL.
 
 🏗️ **Points clés** :
-- Gestion de listes de tâches multiples
-- Persistance des données via fichiers JSON
-- Archivage automatique quotidien des tâches (daily rollover)
-- Édition des tâches en temps réel (popover)
-- Visualisation de la productivité par catégorie
+- **Monitoring Analytique** : Visualisation en temps réel de la productivité par catégorie.
+- **Data Persistence** : Architecture optimisée pour le stockage local via JSON.
+- **Workflow Intelligent** : Archivage automatique et édition dynamique via popovers.
+- **Filtres Avancés** : Segmentation par priorité, statut et échéance.
 
-🏗️ **Valeur ajoutée**:
-- Amélioration de l’organisation personnelle
-- Suivi des habitudes et de la productivité
-- Expérience utilisateur fluide et intuitive`,
+🏗️ **Valeur Ajoutée** :
+- Optimisation du cycle de travail quotidien.
+- Traçabilité complète des habitudes et de la performance.
+- Interface moderne "Cockpit" pour une expérience utilisateur premium.`,
+                en: `🎯 **Objective**: Transform daily task management into a true analytical control center. This application, developed under Streamlit, goes beyond a simple list to offer precise tracking of individual performance.
+
+🌟 **Expertise**: Mastery of Python interactivity and persistent data structures (JSON) for total autonomy without SQL dependencies.
+
+🏗️ **Key Points**:
+- **Analytical Monitoring**: Real-time visualization of productivity by category.
+- **Data Persistence**: Optimized architecture for local storage via JSON.
+- **Intelligent Workflow**: Automatic archiving and dynamic editing through popovers.
+- **Advanced Filters**: Segmentation by priority, status, and deadline.
+
+🏗️ **Added Value**:
+- Optimization of the daily work cycle.
+- Full traceability of habits and of performance.
+- Modern "Cockpit" interface for a premium user experience.`,
             },
             stack: ["Python", "Streamlit", "Pandas", "Json"],
             tags: ["Python", "Streamlit", "Pandas", "Json"],
@@ -225,6 +297,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
                 "assets/img/Liste_tâches/historique.png",
 
             ],
+            video: "assets/img/Liste_tâches/achat.mp4",
             // video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
             links: {
                 github: "https://github.com/kyser131997/Dashboard-de-gestion-de-t-ches",
