@@ -434,7 +434,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
                 fr: "Licence Pro Multimédia & Internet",
                 en: "Professional License in Multimedia & Internet"
             },
-            school: "INPT",
+            school: "INPTIC",
             period: "2021 → 2022",
             details: "Libreville"
         }
@@ -490,3 +490,4 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
         }
     ]
 };
+
