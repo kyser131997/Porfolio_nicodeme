@@ -75,8 +75,8 @@ window.portfolioData = {
 - Total data reliability through the elimination of manual errors.
 - Proactive visibility on budgetary drifts.`,
             },
-            stack: ["Alteryx", "ETL", "Finance", "Data Blending", "Reporting", "Automation"],
-            tags: ["Alteryx", "ETL", "Finance", "Automation"],
+            stack: ["Alteryx", "ETL", "Finance", "Data Blending", "Reporting", "Automatisation"],
+            tags: ["Alteryx", "ETL", "Finance", "Automatisation"],
             images: [
                 "assets/img/Alteryx/Budget.png",
             ],
@@ -490,4 +490,5 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
         }
     ]
 };
+
 
