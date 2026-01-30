@@ -39,6 +39,111 @@ window.portfolioData = {
 
     projects: [
         {
+            id: 6,
+            title: "ICommerce — Data Modeling & SQL sur Snowflake",
+            shortDescription: {
+                fr: "Conception et exploitation d'une base de données e-commerce sur Snowflake avec analyses SQL avancées.",
+                en: "Design and exploitation of an e-commerce database on Snowflake with advanced SQL analytics."
+            },
+            fullDescription: {
+                fr: `🎯 **Objectif** : Démontrer ma capacité à concevoir, modéliser et exploiter une base de données e-commerce sur Snowflake, depuis la modélisation jusqu'à l'analyse des données via SQL. Ce projet simule un système réel de gestion des ventes (clients, produits, catégories, commandes).
+
+🌟 **Expertise** : Maîtrise de la modélisation relationnelle orientée analytique et du SQL analytique sur Snowflake pour l'exploitation de données e-commerce.
+
+🏗️ **Architecture & Environnement** :
+- **Cloud Data Warehouse** : Snowflake
+- **Langage** : SQL
+- **Database** : ICOMMERCE
+- **Schéma** : PUBLIC
+- **Approche** : Modélisation relationnelle orientée analytique
+
+🧩 **Modélisation des données** :
+Le modèle repose sur une structure classique e-commerce :
+- **Référentiels** : Clients & types de clients, Produits, sous-catégories et catégories
+- **Transactionnel** : Ventes (entête), Détails de vente (lignes produits)
+- **Relations clés** : Un client peut effectuer plusieurs ventes, Une vente peut contenir plusieurs produits, Un produit appartient à une sous-catégorie et une catégorie
+
+📊 **Tables principales** :
+- TB_CLIENT : informations clients
+- TB_TYPE_CLIENT : segmentation client
+- TB_PRODUIT : catalogue produits
+- TB_CATEGORIE / TB_SOUS_CATEGORIE : hiérarchie produits
+- TB_VENTE : entête des commandes
+- TB_DETAIL_VENTE : lignes de vente (quantité, prix, marge)
+
+🔎 **Analyses & KPI réalisés** :
+- Chiffre d'affaires total
+- Chiffre d'affaires par client, région, catégorie/produit
+- Top produits par CA
+- Analyse des marges (prix vente vs prix achat)
+- Volume de ventes dans le temps
+
+💡 **Compétences démontrées** :
+- Modélisation de données (relations, clés, cohérence)
+- Utilisation de Snowflake (database, schema, tables)
+- SQL analytique (JOINs, agrégations, KPI)
+- Compréhension des enjeux métier e-commerce
+- Préparation des données pour un usage BI/reporting`,
+                en: `🎯 **Objective**: Demonstrate my ability to design, model, and exploit an e-commerce database on Snowflake, from modeling to data analysis via SQL. This project simulates a real sales management system (customers, products, categories, orders).
+
+🌟 **Expertise**: Mastery of analytical-oriented relational modeling and analytical SQL on Snowflake for e-commerce data exploitation.
+
+🏗️ **Architecture & Environment**:
+- **Cloud Data Warehouse**: Snowflake
+- **Language**: SQL
+- **Database**: ICOMMERCE
+- **Schema**: PUBLIC
+- **Approach**: Analytical-oriented relational modeling
+
+🧩 **Data Modeling**:
+The model is based on a classic e-commerce structure:
+- **Reference Data**: Customers & customer types, Products, sub-categories and categories
+- **Transactional**: Sales (header), Sales details (product lines)
+- **Key Relationships**: A customer can make multiple sales, A sale can contain multiple products, A product belongs to a sub-category and a category
+
+📊 **Main Tables**:
+- TB_CLIENT: customer information
+- TB_TYPE_CLIENT: customer segmentation
+- TB_PRODUIT: product catalog
+- TB_CATEGORIE / TB_SOUS_CATEGORIE: product hierarchy
+- TB_VENTE: order headers
+- TB_DETAIL_VENTE: sales lines (quantity, price, margin)
+
+🔎 **Analyses & KPIs Performed**:
+- Total revenue
+- Revenue by customer, region, category/product
+- Top products by revenue
+- Margin analysis (selling price vs purchase price)
+- Sales volume over time
+
+💡 **Skills Demonstrated**:
+- Data modeling (relationships, keys, consistency)
+- Snowflake usage (database, schema, tables)
+- Analytical SQL (JOINs, aggregations, KPIs)
+- Understanding of e-commerce business challenges
+- Data preparation for BI/reporting usage`,
+            },
+            stack: ["Snowflake", "SQL", "Data Modeling", "E-commerce", "Analytics", "Cloud DWH"],
+            tags: ["Snowflake", "SQL", "Data Modeling", "E-commerce", "Analytics"],
+            images: [
+                "assets/img/icommerce_snowflake/tables.jpeg",
+            ],
+            //video: "assets/img/icommerce/demo.mp4",
+            links: {
+                github: "#",
+                demo: "#"
+            },
+            role: {
+                fr: "Data Analyst",
+                en: "Data Analyst"
+            },
+            impact: {
+                fr: "Modélisation complète d'une base e-commerce garantissant cohérence, facilité d'analyse et scalabilité pour des usages BI.",
+                en: "Complete e-commerce database modeling ensuring consistency, ease of analysis, and scalability for BI usage."
+            },
+            date: "2026"
+        },
+        {
             id: 2,
             title: "Automatisation & Pilotage Budgétaire avec Alteryx",
             shortDescription: {
@@ -75,8 +180,8 @@ window.portfolioData = {
 - Total data reliability through the elimination of manual errors.
 - Proactive visibility on budgetary drifts.`,
             },
-            stack: ["Alteryx", "ETL", "Finance", "Data Blending", "Reporting", "Automatisation"],
-            tags: ["Alteryx", "ETL", "Finance", "Automatisation"],
+            stack: ["Alteryx", "ETL", "Finance", "Data Blending", "Reporting", "Automation"],
+            tags: ["Alteryx", "ETL", "Finance", "Automation"],
             images: [
                 "assets/img/Alteryx/Budget.png",
             ],
@@ -434,7 +539,7 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
                 fr: "Licence Pro Multimédia & Internet",
                 en: "Professional License in Multimedia & Internet"
             },
-            school: "INPTIC",
+            school: "INPT",
             period: "2021 → 2022",
             details: "Libreville"
         }
@@ -490,5 +595,3 @@ L’outil permet d’identifier les clients à risque, de prioriser les actions 
         }
     ]
 };
-
-
