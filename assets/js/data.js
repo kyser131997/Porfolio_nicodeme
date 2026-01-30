@@ -126,9 +126,9 @@ The model is based on a classic e-commerce structure:
             stack: ["Snowflake", "SQL", "Data Modeling", "E-commerce", "Analytics", "Cloud DWH"],
             tags: ["Snowflake", "SQL", "Data Modeling", "E-commerce", "Analytics"],
             images: [
-                "assets/img/icommerce_snowflake/tables.jpeg",
+                "assets/img/icommerce_snowflake/table.jpeg",
             ],
-            //video: "assets/img/icommerce/demo.mp4",
+            video: "assets/img/icommerce_snowflake/icom_video.mp4",
             links: {
                 github: "#",
                 demo: "#"
